@@ -61,37 +61,40 @@ function plotSent2(s){
     let index =0
     let rowlen = Math.sqrt(s.length)
     let rowpart = rowlen/3
+    print(rowpart,rowlen)
     let sz = width/rowlen
     let x =0
     let y =0;
     let cellcount =0
-
-    while (index <=s.length){
+    print(s.length)
+    while (index <s.length){
 
     // plot each atom 
     for(let j=0;j<3;j++){
         for (let i =0;i<3;i++){
-            
-            if( s[index+i+j]==="1"){
+            print("index",index+i+j)
+            if( s[index]==="1"){
                 
                 fill(0,255,0)
             }else{
                 fill(0)
             }
             cellcount++
+            index++
 
             rect(x+(i*sz),y+(j*sz),sz,sz)
-           // print(k,j,i)
+           print("cellcount",cellcount)
 
         }
     }
-    x+=rowpart*sz
+    x+=3*sz // larger row numbers need to have smaller movement
     y+=0
-    index+=rowlen
-    print(x,y)
-    if (cellcount ===rowpart*rowlen){  
+     // index is always increaced by 9 now row len
+    
+    print(x,y,index)
+    if (cellcount ===9*rowpart){  
         print("hello")
-        y+=rowpart*sz
+        y+=3*sz
         x =0;
         print(x,y,index)
         cellcount =0
