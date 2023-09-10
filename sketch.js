@@ -13,7 +13,7 @@ function setup(){
         sentence = doRewrite(sentence)
         print(i,sentence, sentence.length)
     }
-    plotSent(sentence)
+    plotSent2(sentence)
 
 
 }
@@ -51,9 +51,53 @@ function plotSent(s){
             }
 
             rect(j*sz,k*sz,sz,sz)
-            print(k,j,i)
+           // print(k,j,i)
     
         }
     }
 }
 
+function plotSent2(s){
+    let index =0
+    let rowlen = Math.sqrt(s.length)
+    let rowpart = rowlen/3
+    let sz = width/rowlen
+    let x =0
+    let y =0;
+    let cellcount =0
+
+    while (index <=s.length){
+
+    // plot each atom 
+    for(let j=0;j<3;j++){
+        for (let i =0;i<3;i++){
+            
+            if( s[index+i+j]==="1"){
+                
+                fill(0,255,0)
+            }else{
+                fill(0)
+            }
+            cellcount++
+
+            rect(x+(i*sz),y+(j*sz),sz,sz)
+           // print(k,j,i)
+
+        }
+    }
+    x+=rowpart*sz
+    y+=0
+    index+=rowlen
+    print(x,y)
+    if (cellcount ===rowpart*rowlen){  
+        print("hello")
+        y+=rowpart*sz
+        x =0;
+        print(x,y,index)
+        cellcount =0
+    }
+
+    }
+
+
+}
